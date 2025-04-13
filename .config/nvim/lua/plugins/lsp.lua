@@ -12,6 +12,7 @@ return {
         ensure_installed = {
           "lua_ls",
           "emmet_language_server",
+          "html",
           "cssls",
           "tailwindcss",
           "sqlls",
@@ -29,6 +30,7 @@ return {
       servers = {
         lua_ls = {},
         ts_ls = {},
+        html = {},
         cssls = {},
         tailwindcss = {},
         sqlls = {},
