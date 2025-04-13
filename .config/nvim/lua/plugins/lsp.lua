@@ -15,7 +15,6 @@ return {
           "tailwindcss",
           "sqlls",
           "ts_ls",
-          "clangd",
           "jdtls",
         },
       })
@@ -33,7 +32,6 @@ return {
         tailwindcss = {},
         sqlls = {},
         emmet_language_server = {},
-        clangd = {},
         jdtls = {},
       },
     },
