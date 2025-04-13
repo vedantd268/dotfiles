@@ -11,6 +11,7 @@ return {
       require("mason-lspconfig").setup({
         ensure_installed = {
           "lua_ls",
+          "emmet_language_server",
           "cssls",
           "tailwindcss",
           "sqlls",
