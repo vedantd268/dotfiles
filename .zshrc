@@ -67,3 +67,5 @@ alias reloadzsh='source ~/.zshrc'
 # NOTE: shell integration
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
+
+. "$HOME/.local/bin/env"
