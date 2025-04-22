@@ -1,0 +1,6 @@
+spacing: compact
+editor: nvim
+pager: less
+
+keymap:
+  send-request: ctrl+r
