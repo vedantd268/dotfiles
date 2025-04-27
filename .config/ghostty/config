@@ -8,7 +8,7 @@ cursor-style-blink = false
 theme = tokyonight_night
 background = #000000
 
-background-opacity = 0.73
+background-opacity = 0.77
 
 window-decoration = false
 mouse-hide-while-typing = true
