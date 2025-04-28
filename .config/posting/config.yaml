@@ -1,4 +1,5 @@
-spacing: compact
+theme: tokyo-night
+# spacing: compact
 editor: nvim
 pager: less
 
