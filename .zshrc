@@ -1,5 +1,8 @@
-# NOTE: starship integration
-eval "$(starship init zsh)"
+# NOTE: Starship integration
+# eval "$(starship init zsh)"
+
+# NOTE: Oh-my-posh integration
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
 # NOTE: Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -19,7 +22,6 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 
 # NOTE: Add in snippets
-zinit snippet OMZL::git.zsh
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::archlinux
@@ -35,7 +37,7 @@ zstyle ':completion:*:messages' format '%F{blue}%d%f'
 zstyle ':completion:*:warnings' format '%F{red}%d%f'
 zstyle ':completion:*' group-name ''
 
-# NOTE: history
+# NOTE: History
 HISTSIZE=10000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
@@ -43,8 +45,8 @@ HISTDUP=erase
 setopt appendhistory
 setopt sharehistory
 
-# NOTE: common alias
-alias ls="eza --git --icons=always --group-directories-last "
+# NOTE: Common alias
+alias ls="eza --git --icons=always --group-directories-last"
 alias la='ls -A'
 alias laf='la -f --show-symlinks'
 alias ll='ls -l'
@@ -56,15 +58,36 @@ alias lt4='ls -T -L=4'
 
 alias vim='nvim'
 alias vi='nvim'
-alias inv='vim $(fzf -m --preview="bat --color=always {}")'
-
 alias btop='bpytop'
 
-# NOTE: zsh aliases
-alias zshconf='vim ~/.zshrc'
-alias reloadzsh='source ~/.zshrc'
+# NOTE: fzf
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --exclude .git --exclude node_modules"
+export FZF_TMUX_OPTS='-p 70%,60%'
+export FZF_DEFAULT_OPTS='
+  --height 50% --layout=reverse --border
+  --color=fg:#d0d0d0,fg+:#d0d0d0,bg:-1,bg+:#262626
+  --color=hl:#5f87af,hl+:#5fd7ff,info:#afaf87,marker:#87ff00
+  --color=prompt:blue,spinner:#af5fff,pointer:#af5fff,header:#87afaf
+  --color=border:gray,label:#aeaeae,query:#d9d9d9
+  --border=rounded --preview-window=border-rounded --prompt="  "
+  --marker="->" --pointer="⮞" --separator="─" --scrollbar="│"
+  --layout=reverse --info=right
+'
 
-# NOTE: shell integration
+fzf_nvim_popup() {
+  local file
+  file=$(fzf-tmux ${FZF_TMUX_OPTS} --multi) || return
+  [[ -n "$file" ]] && nvim $file
+}
+
+bindkey -s '^f' 'fzf_nvim_popup\n'
+
+# NOTE: Zsh aliases
+zshrc="~/.dotfiles/.zshrc"
+alias zshconf="vi $zshrc"
+alias reloadzsh="source $zshrc"
+
+# NOTE: Shell integration
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 

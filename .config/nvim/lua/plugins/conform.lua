@@ -16,6 +16,7 @@ return {
         jsx = { "prettier" },
         tsx = { "prettier" },
         json = { "prettier" },
+        jsonc = { "prettier" },
         graphql = { "prettier" },
         html = { "prettier" },
         css = { "prettier" },

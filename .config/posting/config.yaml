@@ -1,7 +1,15 @@
-theme: tokyo-night
-# spacing: compact
+theme: galaxy
+spacing: compact
+
+response:
+  prettify_json: true
+heading:
+  visible: true
+  show_host: false
+
 editor: nvim
-pager: less
+pager: fx
 
 keymap:
   send-request: ctrl+r
+  toggle-collection: ctrl+b
