@@ -15,5 +15,3 @@ window-padding-balance = true
 mouse-hide-while-typing = true
 
 scrollback-limit = 1000
-
-command = "tmux"

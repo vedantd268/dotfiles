@@ -92,3 +92,8 @@ source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 
 . "$HOME/.local/bin/env"
+
+# Only start tmux if not already in it, and only for interactive shells
+if [ -z "$TMUX" ] && [ -n "$PS1" ]; then
+     tmux new-session
+fi
