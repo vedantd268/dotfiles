@@ -14,10 +14,10 @@ return {
     })
     require("mini.surround").setup({
       mappings = {
-        add = "gsa",
-        delete = "gsd",
-        replace = "gsr",
-        highlight = "gsh",
+        add = "usa",
+        delete = "usd",
+        replace = "usr",
+        highlight = "ush",
       },
     })
     require("mini.pairs").setup({})
