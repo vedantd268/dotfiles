@@ -4,9 +4,22 @@ return {
   dependencies = "rafamadriz/friendly-snippets",
   version = "*",
   opts = {
+    sources = {
+      default = { "lsp", "path", "snippets", "buffer" },
+
+      per_filetype = {
+        sql = { "snippets", "dadbod" },
+      },
+
+      providers = {
+        dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+      },
+    },
+
     keymap = {
       preset = "default",
     },
+
     snippets = {
       preset = "default",
     },

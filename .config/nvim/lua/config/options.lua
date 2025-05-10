@@ -25,7 +25,7 @@ opt.fileencoding = "utf-8"
 opt.wildignore:append({ "*/node_modules/*" })
 opt.mouse = ""
 opt.termguicolors = true
-opt.splitbelow = false
+opt.splitbelow = true
 opt.splitright = true
 opt.timeoutlen = 400
 opt.undofile = true
