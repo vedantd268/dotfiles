@@ -1,14 +1,18 @@
 return {
   "saghen/blink.cmp",
   event = "LspAttach",
-  dependencies = "rafamadriz/friendly-snippets",
-  version = "*",
+  dependencies = { "rafamadriz/friendly-snippets" },
+  version = "1.*",
   opts = {
+    snippets = {
+      preset = "default",
+    },
+
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
 
       per_filetype = {
-        sql = { "snippets", "dadbod" },
+        sql = { "snippets", "dadbod", "buffer" },
       },
 
       providers = {
@@ -16,34 +20,35 @@ return {
       },
     },
 
-    keymap = {
-      preset = "default",
-    },
-
-    snippets = {
-      preset = "default",
-    },
-
     appearance = {
-      use_nvim_cmp_as_default = true,
       nerd_font_variant = "normal",
     },
 
     completion = {
+      ghost_text = { enabled = true },
       menu = {
-        border = "rounded",
-      },
-      documentation = {
-        window = {
-          border = "rounded",
+        auto_show = true,
+        border = "single",
+        draw = {
+          treesitter = { "lsp" },
+          columns = {
+            { "label", gap = 1 },
+            { "kind_icon" },
+          },
         },
       },
+      documentation = {
+        auto_show = true,
+        window = { border = "single" },
+      },
     },
-  },
 
-  signature = {
-    window = {
-      border = "rounded",
+    signature = {
+      enabled = true,
+      window = {
+        border = "single",
+        show_documentation = false,
+      },
     },
   },
 }

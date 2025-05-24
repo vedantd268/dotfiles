@@ -1,7 +1,7 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  event = "BufReadPre",
+  event = { "BufReadPre", "BufNewFile" },
   config = function()
     require("nvim-treesitter.configs").setup({
       ensure_installed = {
@@ -28,7 +28,7 @@ return {
       auto_install = true,
       highlight = {
         enable = true,
-        additional_vim_regex_highlighting = true,
+        additional_vim_regex_highlighting = false,
       },
       indent = {
         enable = true,

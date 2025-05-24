@@ -10,20 +10,23 @@ return {
         cycle = false,
       },
     },
-    indent = {
-      enabled = true,
-    },
-    input = {
-      enabled = true,
-    },
+    indent = { enabled = true },
+    input = { enabled = true },
     notifier = {
       enabled = true,
-      timeout = 1000,
+      timeout = 700,
+      top_down = false,
     },
     picker = {
       enabled = true,
+      formatters = {
+        file = {
+          filename_first = true,
+          icon_width = 2,
+        },
+      },
       layout = {
-        preset = "select",
+        preset = "telescope",
         cycle = false,
       },
       exclude = {
@@ -42,55 +45,55 @@ return {
         "yarn.lock",
       },
     },
-    quickfile = { enabled = true },
+    quickfile = { enabled = false },
     scope = { enabled = false },
     scroll = { enabled = false },
     words = { enabled = true },
     styles = {
       notification = {
-        wo = { wrap = false }, -- Wrap notifications
+        wo = { wrap = false },
       },
     },
     dashboard = {
       preset = {
-        keys = {
-          {
-            icon = " ",
-            key = "f",
-            desc = "Find File",
-            action = function()
-              Snacks.picker.files()
-            end,
-          },
-          { icon = " ", key = "n", desc = "New File", action = ":ene" },
-          {
-            icon = " ",
-            key = "g",
-            desc = "Find Text",
-            action = function()
-              Snacks.picker.grep({ layout = "default" })
-            end,
-          },
-          {
-            icon = " ",
-            key = "r",
-            desc = "Recent Files",
-            action = function()
-              Snacks.picker.recent()
-            end,
-          },
-          {
-            icon = " ",
-            key = "c",
-            desc = "Config",
-            action = function()
-              Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
-            end,
-          },
-          { icon = " ", key = "s", desc = "Restore Session", section = "session" },
-          { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-          { icon = " ", key = "q", desc = "Quit", action = ":qa" },
-        },
+        -- keys = {
+        --   {
+        --     icon = " ",
+        --     key = "f",
+        --     desc = "Find File",
+        --     action = function()
+        --       Snacks.picker.files()
+        --     end,
+        --   },
+        --   { icon = " ", key = "n", desc = "New File", action = ":ene" },
+        --   {
+        --     icon = " ",
+        --     key = "g",
+        --     desc = "Find Text",
+        --     action = function()
+        --       Snacks.picker.grep({ layout = "telescope" })
+        --     end,
+        --   },
+        --   {
+        --     icon = " ",
+        --     key = "r",
+        --     desc = "Recent Files",
+        --     action = function()
+        --       Snacks.picker.recent()
+        --     end,
+        --   },
+        --   {
+        --     icon = " ",
+        --     key = "c",
+        --     desc = "Config",
+        --     action = function()
+        --       Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+        --     end,
+        --   },
+        --   { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+        --   { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+        --   { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+        -- },
       },
     },
   },
@@ -98,13 +101,13 @@ return {
     {
       "<leader>,",
       function()
-        Snacks.picker.buffers()
+        Snacks.picker.buffers({ layout = "select" })
       end,
     },
     {
       "<leader>g",
       function()
-        Snacks.picker.grep({ layout = "default" })
+        Snacks.picker.grep({ layout = "telescope" })
       end,
     },
     {
@@ -146,7 +149,7 @@ return {
     {
       "<leader>pp",
       function()
-        Snacks.picker.projects()
+        Snacks.picker.projects({ layout = "select" })
       end,
     },
     {
@@ -164,7 +167,7 @@ return {
     {
       "<leader>gw",
       function()
-        Snacks.picker.grep_word()
+        Snacks.picker.grep_word({ layout = "telescope" })
       end,
       mode = { "n", "x" },
     },
@@ -177,13 +180,13 @@ return {
     {
       "<leader>sh",
       function()
-        Snacks.picker.help({ layout = "default" })
+        Snacks.picker.help({ layout = "telescope" })
       end,
     },
     {
       "<leader>sm",
       function()
-        Snacks.picker.marks({ layout = "default" })
+        Snacks.picker.marks({ layout = "telescope" })
       end,
     },
     {
@@ -195,7 +198,7 @@ return {
     {
       "gr",
       function()
-        Snacks.picker.lsp_references({ layout = "default" })
+        Snacks.picker.lsp_references({ layout = "telescope" })
       end,
       nowait = true,
     },
@@ -203,6 +206,12 @@ return {
       "gI",
       function()
         Snacks.picker.lsp_implementations()
+      end,
+    },
+    {
+      "<leader>th",
+      function()
+        Snacks.picker.colorschemes()
       end,
     },
   },

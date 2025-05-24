@@ -20,7 +20,7 @@ opt.showmode = false
 opt.cmdheight = 0
 opt.laststatus = 2
 opt.backspace = { "start", "eol", "indent" }
-opt.clipboard = "unnamedplus"
+opt.clipboard:append("unnamedplus")
 opt.fileencoding = "utf-8"
 opt.wildignore:append({ "*/node_modules/*" })
 opt.mouse = ""
@@ -34,5 +34,6 @@ opt.writebackup = false
 opt.cursorline = true
 opt.hlsearch = true
 opt.incsearch = true
+opt.inccommand = "split"
 opt.smartcase = true
 opt.ignorecase = true

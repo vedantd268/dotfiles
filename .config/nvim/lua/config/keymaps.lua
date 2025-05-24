@@ -79,6 +79,7 @@ end, opts)
 -- DBui
 keymap("n", "<leader>db", ":DBUIToggle<CR>", opts)
 
+-- TODO comments
 keymap("n", "]t", function()
   require("todo-comments").jump_next()
 end)

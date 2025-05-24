@@ -60,26 +60,25 @@ alias vim='nvim'
 alias vi='nvim'
 alias btop='bpytop'
 
-# NOTE: fzf
+# NOTE: fzf default options
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --exclude .git --exclude node_modules"
-export FZF_TMUX_OPTS='-p 70%,60%'
+export FZF_TMUX_OPTS='-p 80%,60%'
 export FZF_DEFAULT_OPTS='
   --height 50% --layout=reverse --border
   --color=fg:#d0d0d0,fg+:#d0d0d0,bg:-1,bg+:#262626
   --color=hl:#5f87af,hl+:#5fd7ff,info:#afaf87,marker:#87ff00
   --color=prompt:blue,spinner:#af5fff,pointer:#af5fff,header:#87afaf
   --color=border:gray,label:#aeaeae,query:#d9d9d9
-  --border=rounded --preview-window=border-rounded --prompt="  "
+  --border=rounded --prompt="  "
   --marker="->" --pointer="⮞" --separator="─" --scrollbar="│"
-  --layout=reverse --info=right
+  --info=right
 '
 
 fzf_nvim_popup() {
-  local file
-  file=$(fzf-tmux ${FZF_TMUX_OPTS} --multi) || return
-  [[ -n "$file" ]] && nvim $file
+  local files
+  files=("${(@f)$(fzf-tmux ${FZF_TMUX_OPTS} --multi)}") || return
+  [[ -n $files ]] && nvim "${files[@]}"
 }
-
 bindkey -s '^f' 'fzf_nvim_popup\n'
 
 # NOTE: Zsh aliases
@@ -92,8 +91,3 @@ source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 
 . "$HOME/.local/bin/env"
-
-# Only start tmux if not already in it, and only for interactive shells
-if [ -z "$TMUX" ] && [ -n "$PS1" ]; then
-     tmux new-session
-fi

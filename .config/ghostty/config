@@ -1,5 +1,6 @@
 font-family = "JetBrainsMono Nerd Font"
 font-size = 16
+
 shell-integration-features = no-cursor
 cursor-style = "block"
 cursor-style-blink = false
@@ -7,11 +8,11 @@ cursor-style-blink = false
 theme = tokyonight_night
 background = #000000
 
-background-opacity = 0.77
+background-opacity = 0.75
 
 window-decoration = false
+window-padding-x = 7, 7
 window-padding-y = 0
-window-padding-balance = true
 mouse-hide-while-typing = true
 
 scrollback-limit = 1000
