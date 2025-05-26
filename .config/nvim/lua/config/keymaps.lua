@@ -55,7 +55,7 @@ keymap("n", "sl", ":wincmd l<CR>", opts)
 
 -- Buffers
 keymap("n", "<leader>x", ":bdelete!<CR>", opts) -- close buffer
-keymap("n", "<leader>b", ":enew <CR>", opts) -- new buffer
+keymap("n", "<leader>b", ":enew<CR>", opts) -- new buffer
 
 -- Mini files
 keymap("n", "-", ":lua MiniFiles.open()<CR>", opts)

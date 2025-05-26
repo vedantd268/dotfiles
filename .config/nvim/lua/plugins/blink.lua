@@ -25,10 +25,9 @@ return {
     },
 
     completion = {
-      ghost_text = { enabled = true },
       menu = {
         auto_show = true,
-        border = "single",
+        border = "rounded",
         draw = {
           treesitter = { "lsp" },
           columns = {
@@ -37,16 +36,18 @@ return {
           },
         },
       },
+
       documentation = {
         auto_show = true,
-        window = { border = "single" },
+        auto_show_delay_ms = 100,
+        window = { border = "rounded" },
       },
     },
 
     signature = {
-      enabled = true,
+      enabled = false,
       window = {
-        border = "single",
+        border = "rounded",
         show_documentation = false,
       },
     },

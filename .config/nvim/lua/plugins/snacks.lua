@@ -3,7 +3,6 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
-    bigfile = { enabled = false },
     explorer = {
       enabled = true,
       layout = {
@@ -19,10 +18,10 @@ return {
     },
     picker = {
       enabled = true,
+      prompt = "   ",
       formatters = {
         file = {
           filename_first = true,
-          icon_width = 2,
         },
       },
       layout = {
@@ -45,9 +44,6 @@ return {
         "yarn.lock",
       },
     },
-    quickfile = { enabled = false },
-    scope = { enabled = false },
-    scroll = { enabled = false },
     words = { enabled = true },
     styles = {
       notification = {
@@ -55,45 +51,32 @@ return {
       },
     },
     dashboard = {
+      enabled = true,
       preset = {
-        -- keys = {
-        --   {
-        --     icon = " ",
-        --     key = "f",
-        --     desc = "Find File",
-        --     action = function()
-        --       Snacks.picker.files()
-        --     end,
-        --   },
-        --   { icon = " ", key = "n", desc = "New File", action = ":ene" },
-        --   {
-        --     icon = " ",
-        --     key = "g",
-        --     desc = "Find Text",
-        --     action = function()
-        --       Snacks.picker.grep({ layout = "telescope" })
-        --     end,
-        --   },
-        --   {
-        --     icon = " ",
-        --     key = "r",
-        --     desc = "Recent Files",
-        --     action = function()
-        --       Snacks.picker.recent()
-        --     end,
-        --   },
-        --   {
-        --     icon = " ",
-        --     key = "c",
-        --     desc = "Config",
-        --     action = function()
-        --       Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
-        --     end,
-        --   },
-        --   { icon = " ", key = "s", desc = "Restore Session", section = "session" },
-        --   { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-        --   { icon = " ", key = "q", desc = "Quit", action = ":qa" },
-        -- },
+        keys = {
+          { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+          { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+          { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+          { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+          {
+            icon = " ",
+            key = "c",
+            desc = "Config",
+            action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+          },
+          { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+          { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+        },
+        header = [[
+                                                                     
+       ████ ██████           █████      ██                     
+      ███████████             █████                             
+      █████████ ███████████████████ ███   ███████████   
+     █████████  ███    █████████████ █████ ██████████████   
+    █████████ ██████████ █████████ █████ █████ ████ █████   
+  ███████████ ███    ███ █████████ █████ █████ ████ █████  
+ ██████  █████████████████████ ████ █████ █████ ████ ██████ 
+        ]],
       },
     },
   },
@@ -107,7 +90,7 @@ return {
     {
       "<leader>g",
       function()
-        Snacks.picker.grep({ layout = "telescope" })
+        Snacks.picker.grep()
       end,
     },
     {
@@ -167,7 +150,7 @@ return {
     {
       "<leader>gw",
       function()
-        Snacks.picker.grep_word({ layout = "telescope" })
+        Snacks.picker.grep_word()
       end,
       mode = { "n", "x" },
     },
@@ -203,7 +186,7 @@ return {
       nowait = true,
     },
     {
-      "gI",
+      "gi",
       function()
         Snacks.picker.lsp_implementations()
       end,
