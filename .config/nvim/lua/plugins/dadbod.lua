@@ -1,9 +1,6 @@
 return {
   "kristijanhusak/vim-dadbod-ui",
-  event = {
-    "BufReadPre",
-    "BufNewFile",
-  },
+  event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     {
       "tpope/vim-dadbod",
