@@ -17,6 +17,7 @@ return {
             },
           },
         },
+        html = {},
         cssls = {},
         emmet_language_server = {
           filetypes = { "html", "css", "javascriptreact", "typescriptreact" },
@@ -34,6 +35,7 @@ return {
         ensure_installed = {
           "lua_ls",
           "ts_ls",
+          "html",
           "cssls",
           "tailwindcss",
           "emmet_language_server",
