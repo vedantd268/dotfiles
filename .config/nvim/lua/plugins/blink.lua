@@ -1,16 +1,10 @@
 return {
   "saghen/blink.cmp",
-  event = "LspAttach",
+  event = "VeryLazy",
   dependencies = { "rafamadriz/friendly-snippets" },
   version = "1.*",
   opts = {
-    snippets = {
-      preset = "default",
-    },
-
     sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
-
       per_filetype = {
         sql = { "snippets", "dadbod", "buffer" },
       },
@@ -25,29 +19,28 @@ return {
     },
 
     completion = {
+      keyword = { range = "prefix" },
+      list = {
+        selection = {
+          auto_insert = false,
+        },
+      },
       menu = {
         auto_show = true,
-        border = "rounded",
-        draw = {
-          treesitter = { "lsp" },
-          columns = {
-            { "label", gap = 1 },
-            { "kind_icon" },
-          },
-        },
+        border = "single",
       },
 
       documentation = {
         auto_show = true,
         auto_show_delay_ms = 100,
-        window = { border = "rounded" },
+        window = { border = "single" },
       },
     },
 
     signature = {
-      enabled = false,
+      enabled = true,
       window = {
-        border = "rounded",
+        border = "single",
         show_documentation = false,
       },
     },

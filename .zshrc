@@ -1,32 +1,32 @@
-# NOTE: Starship integration
+# HACK: Starship integration
 # eval "$(starship init zsh)"
 
-# NOTE: Oh-my-posh integration
+# HACK: Oh-my-posh integration
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
-# NOTE: Set the directory we want to store zinit and plugins
+# HACK: Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-# NOTE: Download Zinit, if it's not there yet
+# HACK: Download Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then
    mkdir -p "$(dirname $ZINIT_HOME)"
    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
-# NOTE: Source/Load zinit
+# HACK: Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
-# NOTE: Add in zsh plugins
+# HACK: Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 
-# NOTE: Add in snippets
+# HACK: Add in snippets
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::archlinux
 
-# NOTE: Load completions
+# HACK: Load completions
 autoload -Uz compinit && compinit
 
 zinit cdreplay -q
@@ -37,7 +37,7 @@ zstyle ':completion:*:messages' format '%F{blue}%d%f'
 zstyle ':completion:*:warnings' format '%F{red}%d%f'
 zstyle ':completion:*' group-name ''
 
-# NOTE: History
+# HACK: History
 HISTSIZE=10000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
@@ -45,7 +45,7 @@ HISTDUP=erase
 setopt appendhistory
 setopt sharehistory
 
-# NOTE: Common alias
+# HACK: Common alias
 alias ls="eza --git --icons=always --group-directories-last"
 alias la='ls -A'
 alias laf='la -f --show-symlinks'
@@ -60,7 +60,7 @@ alias vim='nvim'
 alias vi='nvim'
 alias btop='bpytop'
 
-# NOTE: fzf default options
+# HACK: fzf default options
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --exclude .git --exclude node_modules"
 export FZF_TMUX_OPTS='-p 80%,60%'
 export FZF_DEFAULT_OPTS='
@@ -81,12 +81,12 @@ fzf_nvim_popup() {
 }
 bindkey -s '^f' 'fzf_nvim_popup\n'
 
-# NOTE: Zsh aliases
+# HACK: Zsh aliases
 zshrc="~/.dotfiles/.zshrc"
 alias zshconf="vi $zshrc"
 alias reloadzsh="source $zshrc"
 
-# NOTE: Shell integration
+# HACK: Shell integration
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
 

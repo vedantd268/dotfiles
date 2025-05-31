@@ -1,7 +1,8 @@
 return {
   "echasnovski/mini.nvim",
   version = "*",
-  event = "InsertEnter",
+  event = "VeryLazy",
+
   config = function()
     require("mini.files").setup({
       mappings = {

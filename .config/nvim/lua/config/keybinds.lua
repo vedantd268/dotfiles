@@ -13,15 +13,13 @@ keymap("n", "<C-a>", "gg<S-v>G", opts)
 -- Remove search highlight
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 
--- Keep last yanked when pasting
-keymap("v", "p", '"_dP', opts)
-
--- delete single character without copying into register
+-- delete character without copying into register
 keymap("n", "x", '"_x', opts)
 
 -- delete entire line  without copying in register
 keymap("n", "dd", '"_dd', opts)
 
+-- delete single world without copying in register
 keymap("n", "dw", '"_dw', opts)
 
 -- Vertical scroll and center
@@ -60,7 +58,7 @@ keymap("n", "<leader>b", ":enew<CR>", opts) -- new buffer
 -- Mini files
 keymap("n", "-", ":lua MiniFiles.open()<CR>", opts)
 
-keymap("n", "<leader>fc", function()
+keymap("n", "<leader>fm", function()
   vim.lsp.buf.format()
 end, opts)
 

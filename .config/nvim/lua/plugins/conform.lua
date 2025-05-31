@@ -18,6 +18,7 @@ return {
         html = { "prettierd", "prettier", stop_after_first = true },
         css = { "prettierd", "prettier", stop_after_first = true },
         sql = { "sql_formatter" },
+        cpp = { "clang_format" },
         java = { "clang_format" },
       },
       format_on_save = {

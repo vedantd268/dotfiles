@@ -9,7 +9,7 @@ return {
         cycle = false,
       },
     },
-    indent = { enabled = true },
+    indent = { enabled = false },
     input = { enabled = true },
     notifier = {
       enabled = true,
@@ -112,31 +112,31 @@ return {
       end,
     },
     {
-      "<leader>pc",
+      "<leader>fc",
       function()
         Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
       end,
     },
     {
-      "<leader>pf",
+      "<leader>ff",
       function()
         Snacks.picker.files()
       end,
     },
     {
-      "<leader>pg",
+      "<leader>fg",
       function()
         Snacks.picker.git_files()
       end,
     },
     {
-      "<leader>pp",
+      "<leader>fp",
       function()
         Snacks.picker.projects({ layout = "select" })
       end,
     },
     {
-      "<leader>pr",
+      "<leader>fr",
       function()
         Snacks.picker.recent()
       end,
@@ -163,13 +163,13 @@ return {
     {
       "<leader>sh",
       function()
-        Snacks.picker.help({ layout = "telescope" })
+        Snacks.picker.help()
       end,
     },
     {
       "<leader>sm",
       function()
-        Snacks.picker.marks({ layout = "telescope" })
+        Snacks.picker.marks()
       end,
     },
     {
@@ -181,7 +181,7 @@ return {
     {
       "gr",
       function()
-        Snacks.picker.lsp_references({ layout = "telescope" })
+        Snacks.picker.lsp_references()
       end,
       nowait = true,
     },

@@ -2,45 +2,49 @@ return {
   {
     "williamboman/mason.nvim",
     event = "VeryLazy",
-    config = true,
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "lua_ls",
-          "emmet_language_server",
-          "html",
-          "cssls",
-          "tailwindcss",
-          "sqls",
-          "ts_ls",
-        },
-      })
-    end,
-  },
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = "saghen/blink.cmp",
-    event = "InsertEnter",
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim",
+      "neovim/nvim-lspconfig",
+    },
     opts = {
       servers = {
-        lua_ls = {},
-        ts_ls = {},
-        html = {},
+        lua_ls = {
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = { "vim", "Snacks" },
+              },
+            },
+          },
+        },
         cssls = {},
+        emmet_language_server = {
+          filetypes = { "html", "css", "javascriptreact", "typescriptreact" },
+        },
+        ts_ls = {},
         tailwindcss = {},
         sqls = {},
-        emmet_language_server = {},
+        clangd = {},
       },
     },
     config = function(_, opts)
-      local lspconfig = require("lspconfig")
+      require("mason").setup()
+
+      require("mason-lspconfig").setup({
+        ensure_installed = {
+          "lua_ls",
+          "ts_ls",
+          "cssls",
+          "tailwindcss",
+          "emmet_language_server",
+          "sqls",
+          "clangd",
+        },
+      })
+
       for server, config in pairs(opts.servers) do
-        config.capabilities = require("blink.cmp").get_lsp_capabilities()
-        lspconfig[server].setup(config)
+        vim.lsp.config(server, config)
+        vim.lsp.enable(server)
       end
     end,
   },
