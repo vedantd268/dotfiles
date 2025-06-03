@@ -49,12 +49,12 @@ return {
         lualine_x = {
           {
             recording_status,
-            color = { fg = "#ff9e64", gui = "bold" },
+            color = { fg = "#ffc96e" },
           },
           {
             lazy_status.updates,
             cond = lazy_status.has_updates,
-            color = { fg = "#ff9e64" },
+            color = { fg = "#ffc96e" },
           },
           { "filetype" },
         },
