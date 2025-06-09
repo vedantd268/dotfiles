@@ -24,6 +24,7 @@ return {
         "yaml",
         "tmux",
         "c",
+        "cpp",
         "go",
         "python",
       },
