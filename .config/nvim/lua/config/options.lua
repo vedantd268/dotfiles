@@ -34,5 +34,6 @@ opt.writebackup = false
 opt.cursorline = true
 opt.hlsearch = true
 opt.incsearch = true
+opt.inccommand = "split"
 opt.smartcase = true
 opt.ignorecase = true
