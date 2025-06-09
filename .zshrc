@@ -1,3 +1,6 @@
+# HACK: Vim mode enable
+bindkey -v
+
 # HACK: Starship integration
 # eval "$(starship init zsh)"
 
@@ -56,8 +59,7 @@ alias lt2='ls -T -L=2'
 alias lt3='ls -T -L=3'
 alias lt4='ls -T -L=4'
 
-alias vim='nvim'
-alias vi='nvim'
+alias nv='nvim'
 alias btop='bpytop'
 
 # HACK: fzf default options
@@ -83,7 +85,7 @@ bindkey -s '^f' 'fzf_nvim_popup\n'
 
 # HACK: Zsh aliases
 zshrc="~/.dotfiles/.zshrc"
-alias zshconf="vi $zshrc"
+alias zshconf="nv $zshrc"
 alias reloadzsh="source $zshrc"
 
 # HACK: Shell integration
