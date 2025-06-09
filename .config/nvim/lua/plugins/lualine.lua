@@ -4,6 +4,8 @@ return {
   config = function()
     local lualine = require("lualine")
     local lazy_status = require("lazy.status")
+    local colors = require("kanagawa.colors").setup()
+    local palette_colors = colors.palette
 
     local mode = {
       "mode",
@@ -49,12 +51,12 @@ return {
         lualine_x = {
           {
             recording_status,
-            color = { fg = "#ffc96e" },
+            color = { fg = palette_colors.surimiOrange },
           },
           {
             lazy_status.updates,
             cond = lazy_status.has_updates,
-            color = { fg = "#ffc96e" },
+            color = { fg = palette_colors.surimiOrange },
           },
           { "filetype" },
         },
