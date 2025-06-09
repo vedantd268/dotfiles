@@ -8,11 +8,12 @@ cursor-style-blink = false
 theme = tokyonight_night
 background = #000000
 
-background-opacity = 0.75
+background-opacity = 0.7
 
 window-decoration = false
-window-padding-x = 10, 10
-window-padding-y = 0
-mouse-hide-while-typing = true
+window-padding-x = 15
+window-padding-y = 10
+window-padding-balance = true
 
+mouse-hide-while-typing = true
 scrollback-limit = 1000
