@@ -13,8 +13,7 @@ return {
     input = { enabled = true },
     notifier = {
       enabled = true,
-      timeout = 700,
-      top_down = false,
+      timeout = 1000,
     },
     picker = {
       enabled = true,
@@ -100,7 +99,7 @@ return {
     {
       "<leader>n",
       function()
-        Snacks.picker.notifications()
+        Snacks.picker.notifications({ layout = "select" })
       end,
     },
     {
@@ -140,7 +139,7 @@ return {
       end,
     },
     {
-      "<leader>gb",
+      "<leader>gl",
       function()
         Snacks.picker.lines()
       end,
