@@ -25,7 +25,7 @@ return {
         ts_ls = {},
         tailwindcss = {},
         sqls = {},
-        clangd = {},
+        jdtls = {},
       },
     },
     config = function(_, opts)
@@ -40,7 +40,7 @@ return {
           "tailwindcss",
           "emmet_language_server",
           "sqls",
-          "clangd",
+          "jdtls",
         },
       })
 
