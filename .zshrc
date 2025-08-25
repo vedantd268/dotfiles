@@ -61,6 +61,11 @@ alias lt4='ls -T -L=4'
 
 alias nv='nvim'
 alias btop='bpytop'
+alias ff='fastfetch'
+alias grep='grep --color -n'
+alias ps='paru -S'
+alias psu='paru -Syu'
+alias pr='paru -Rscn'
 
 # HACK: fzf default options
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --exclude .git --exclude node_modules"
@@ -91,5 +96,3 @@ alias reloadzsh="source $zshrc"
 # HACK: Shell integration
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
-
-. "$HOME/.local/bin/env"
