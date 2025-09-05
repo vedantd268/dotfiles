@@ -1,23 +1,29 @@
 return {
   "saghen/blink.cmp",
   event = "VeryLazy",
-  dependencies = { "rafamadriz/friendly-snippets" },
+  dependencies = { "rafamadriz/friendly-snippets", "moyiz/blink-emoji.nvim" },
   version = "1.*",
   opts = {
     sources = {
+      default = { "lsp", "path", "snippets", "buffer", "emoji", "cmdline" },
       per_filetype = {
         sql = { "snippets", "dadbod", "buffer" },
       },
-
       providers = {
-        dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+        dadbod = {
+          name = "Dadbod",
+          module = "vim_dadbod_completion.blink",
+        },
+        emoji = {
+          module = "blink-emoji",
+          name = "Emoji",
+          score_offset = 15,
+        },
       },
     },
-
     appearance = {
       nerd_font_variant = "normal",
     },
-
     completion = {
       keyword = { range = "prefix" },
       list = {
@@ -27,21 +33,20 @@ return {
       },
       menu = {
         auto_show = true,
-        border = "rounded",
+        -- border = "rounded",
+        draw = {
+          columns = {
+            { "label" },
+            { "kind" },
+          },
+        },
       },
-
       documentation = {
         auto_show = false,
-        window = { border = "rounded" },
       },
     },
-
     signature = {
-      enabled = true,
-      window = {
-        border = "rounded",
-        show_documentation = false,
-      },
+      enabled = false,
     },
   },
 }
