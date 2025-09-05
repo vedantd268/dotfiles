@@ -3,29 +3,37 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
-    explorer = {
-      enabled = true,
-      layout = {
-        cycle = false,
-      },
-    },
-    indent = { enabled = false },
     input = { enabled = true },
+    image = { convert = { notify = false } },
     notifier = {
-      enabled = true,
       timeout = 1000,
     },
     picker = {
-      enabled = true,
-      prompt = "   ",
-      formatters = {
-        file = {
-          filename_first = true,
-        },
-      },
       layout = {
-        preset = "telescope",
+        preset = "my_picker",
         cycle = false,
+      },
+      layouts = {
+        my_picker = {
+          reverse = true,
+          layout = {
+            box = "horizontal",
+            backdrop = false,
+            width = 0.6,
+            height = 0.7,
+            {
+              box = "vertical",
+              { win = "list", title = " Results ", title_pos = "center", border = "single" },
+              {
+                win = "input",
+                height = 1,
+                border = "single",
+                title = "{title} {live} {flags}",
+                title_pos = "center",
+              },
+            },
+          },
+        },
       },
       exclude = {
         "node_modules/",
@@ -48,12 +56,11 @@ return {
       },
     },
     dashboard = {
-      enabled = true,
       preset = {
         keys = {
-          { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+          { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick()" },
           { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-          { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+          { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.picker.grep({layout='telescope'})" },
           { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
           {
             icon = " ",
@@ -79,27 +86,21 @@ return {
   },
   keys = {
     {
-      "<leader>,",
+      "<leader>fb",
       function()
-        Snacks.picker.buffers({ layout = "select" })
+        Snacks.picker.buffers()
       end,
     },
     {
       "<leader>g",
       function()
-        Snacks.picker.grep()
+        Snacks.picker.grep({ layout = "telescope" })
       end,
     },
     {
       "<leader>:",
       function()
-        Snacks.picker.command_history({ layout = "select" })
-      end,
-    },
-    {
-      "<leader>n",
-      function()
-        Snacks.picker.notifications({ layout = "select" })
+        Snacks.picker.command_history({ layout = "my_picker" })
       end,
     },
     {
@@ -115,9 +116,9 @@ return {
       end,
     },
     {
-      "<leader>ff",
+      "<leader>f",
       function()
-        Snacks.picker.files()
+        Snacks.picker.files({ layout = "my_picker" })
       end,
     },
     {
@@ -129,7 +130,7 @@ return {
     {
       "<leader>fp",
       function()
-        Snacks.picker.projects({ layout = "select" })
+        Snacks.picker.projects()
       end,
     },
     {
@@ -152,47 +153,47 @@ return {
       mode = { "n", "x" },
     },
     {
-      "<leader>sd",
+      "<leader>fd",
       function()
         Snacks.picker.diagnostics()
       end,
     },
     {
-      "<leader>sh",
+      "<leader>fh",
       function()
         Snacks.picker.help()
       end,
     },
     {
-      "<leader>sm",
+      "<leader>fm",
       function()
         Snacks.picker.marks()
       end,
     },
-    {
-      "gd",
-      function()
-        Snacks.picker.lsp_definitions()
-      end,
-    },
-    {
-      "gr",
-      function()
-        Snacks.picker.lsp_references()
-      end,
-      nowait = true,
-    },
-    {
-      "gi",
-      function()
-        Snacks.picker.lsp_implementations()
-      end,
-    },
-    {
-      "<leader>th",
-      function()
-        Snacks.picker.colorschemes()
-      end,
-    },
+    -- {
+    --   "gd",
+    --   function()
+    --     Snacks.picker.lsp_definitions()
+    --   end,
+    -- },
+    -- {
+    --   "gD",
+    --   function()
+    --     Snacks.picker.lsp_declaration()
+    --   end,
+    -- },
+    -- {
+    --   "gr",
+    --   function()
+    --     Snacks.picker.lsp_references()
+    --   end,
+    --   nowait = true,
+    -- },
+    -- {
+    --   "gi",
+    --   function()
+    --     Snacks.picker.lsp_implementations()
+    --   end,
+    -- },
   },
 }
