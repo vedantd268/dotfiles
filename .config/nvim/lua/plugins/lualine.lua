@@ -4,8 +4,8 @@ return {
   config = function()
     local lualine = require("lualine")
     local lazy_status = require("lazy.status")
-    local colors = require("kanagawa.colors").setup()
-    local palette_colors = colors.palette
+
+    local kanagawa_palette = require("kanagawa.colors").setup().palette
 
     local mode = {
       "mode",
@@ -33,16 +33,16 @@ return {
       if reg == "" then
         return ""
       else
-        return "Recording @" .. reg
+        return "@" .. reg
       end
     end
 
     lualine.setup({
-      icons_enabled = true,
       options = {
+        icons_enabled = true,
         theme = "auto",
-        component_separators = { left = "|", right = "|" },
-        section_separators = { left = "|", right = "" },
+        section_separators = { left = "", right = "" },
+        component_separators = { left = "", right = "" },
       },
       sections = {
         lualine_a = { mode },
@@ -51,12 +51,12 @@ return {
         lualine_x = {
           {
             recording_status,
-            color = { fg = palette_colors.surimiOrange },
+            color = { fg = kanagawa_palette.surimiOrange },
           },
           {
             lazy_status.updates,
             cond = lazy_status.has_updates,
-            color = { fg = palette_colors.surimiOrange },
+            color = { fg = kanagawa_palette.surimiOrange },
           },
           { "filetype" },
         },
