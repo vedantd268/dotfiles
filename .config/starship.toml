@@ -15,7 +15,7 @@ truncate_to_repo = true
 [character]
 success_symbol = "[❯](purple)"
 error_symbol = "[❯](red)"
-vimcmd_symbol = "[❯❯](green)"
+vimcmd_symbol = "[❯](yellow)"
 
 [git_branch]
 format = "[$branch]($style)"
