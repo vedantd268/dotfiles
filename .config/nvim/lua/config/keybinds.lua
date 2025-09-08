@@ -53,6 +53,14 @@ keymap("n", "<leader>ca", function()
   vim.lsp.buf.code_action()
 end, opts)
 
+keymap("n", "]d", function()
+  vim.diagnostic.goto_next()
+end, opts)
+
+keymap("n", "[d", function()
+  vim.diagnostic.goto_prev()
+end, opts)
+
 keymap("n", "<leader>db", ":DBUIToggle<CR>", opts)
 
 keymap("n", "]t", function()
