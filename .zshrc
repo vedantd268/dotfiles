@@ -1,11 +1,15 @@
-# HACK: Vim mode enable
+# HACK: Vi mode enable
 bindkey -v
 
 # HACK: Starship integration
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"
+
+# HACK: Shell integration
+source <(fzf --zsh)
+eval "$(zoxide init zsh)"
 
 # HACK: Oh-my-posh integration
-eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+# eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
 
 # HACK: Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -25,7 +29,6 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 
 # HACK: Add in snippets
-zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::archlinux
 
@@ -39,6 +42,13 @@ zstyle ':completion:*:descriptions' format '%F{yellow}%d%f'
 zstyle ':completion:*:messages' format '%F{blue}%d%f'
 zstyle ':completion:*:warnings' format '%F{red}%d%f'
 zstyle ':completion:*' group-name ''
+
+# HACK: For vi motions
+function zle-line-init zle-keymap-select {
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
 
 # HACK: History
 HISTSIZE=10000
@@ -81,7 +91,7 @@ export FZF_DEFAULT_OPTS='
   --info=right
 '
 
-fzf_nvim_popup() {
+function fzf_nvim_popup() {
   local files
   files=("${(@f)$(fzf-tmux ${FZF_TMUX_OPTS} --multi)}") || return
   [[ -n $files ]] && nvim "${files[@]}"
@@ -90,9 +100,4 @@ bindkey -s '^f' 'fzf_nvim_popup\n'
 
 # HACK: Zsh aliases
 zshrc="~/.dotfiles/.zshrc"
-alias zshconf="nv $zshrc"
-alias reloadzsh="source $zshrc"
-
-# HACK: Shell integration
-source <(fzf --zsh)
-eval "$(zoxide init zsh)"
+alias reload="source $zshrc"
