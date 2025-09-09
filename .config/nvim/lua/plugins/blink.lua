@@ -33,7 +33,6 @@ return {
       },
       menu = {
         auto_show = true,
-        -- border = "rounded",
         draw = {
           columns = {
             { "label" },
