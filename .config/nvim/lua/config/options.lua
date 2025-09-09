@@ -1,6 +1,6 @@
 local vo = vim.opt
 
-vo.winborder = "single"
+vo.winborder = "rounded"
 vim.g.have_nerd_font = true
 vo.number = true
 vo.relativenumber = true
