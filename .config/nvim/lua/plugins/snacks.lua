@@ -23,11 +23,11 @@ return {
             height = 0.7,
             {
               box = "vertical",
-              { win = "list", title = " Results ", title_pos = "center", border = "single" },
+              { win = "list", title = " Results ", title_pos = "center", border = "rounded" },
               {
                 win = "input",
                 height = 1,
-                border = "single",
+                border = "rounded",
                 title = "{title} {live} {flags}",
                 title_pos = "center",
               },
