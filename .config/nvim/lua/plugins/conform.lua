@@ -1,7 +1,6 @@
 return {
   "stevearc/conform.nvim",
   event = { "BufReadPre", "BufNewFile" },
-
   config = function()
     local conform = require("conform")
     conform.setup({
@@ -11,18 +10,15 @@ return {
         typescript = { "biome" },
         javascriptreact = { "biome" },
         typescriptrect = { "biome" },
-        vue = { "prettier" },
         json = { "biome" },
         jsonc = { "biome" },
         graphql = { "prettier" },
         html = { "prettier" },
         css = { "prettier" },
-        sql = { "sql_formatter" },
-        cpp = { "clang_format" },
         java = { "google_java_format" },
       },
       format_on_save = {
-        timeout_ms = 500,
+        timeout_ms = 250,
         lsp_format = "fallback",
       },
     })
