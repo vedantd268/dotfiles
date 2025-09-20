@@ -1,7 +1,5 @@
 local vo = vim.opt
 
-vo.winborder = "rounded"
-vim.g.have_nerd_font = true
 vo.number = true
 vo.relativenumber = true
 vo.numberwidth = 4
@@ -18,8 +16,7 @@ vo.breakindent = true
 vo.backup = false
 vo.showcmd = false
 vo.showmode = false
-vo.cmdheight = 0
-vo.laststatus = 2
+vo.cmdheight = 1
 vo.backspace = { "start", "eol", "indent" }
 vo.clipboard:append("unnamedplus")
 vo.fileencoding = "utf-8"
