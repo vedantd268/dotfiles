@@ -3,12 +3,28 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
-    input = { enabled = true },
-    image = { convert = { notify = false } },
     notifier = {
-      timeout = 1000,
+      timeout = 2000,
+    },
+    bigfile = {
+      enabled = false,
+    },
+    image = {
+      enabled = false,
+    },
+    input = {
+      enabled = true,
+    },
+    statuscolumn = {
+      enabled = true,
+    },
+    explorer = {
+      enabled = true,
     },
     picker = {
+      matcher = {
+        frecency = true,
+      },
       layout = {
         preset = "my_picker",
         cycle = false,
@@ -44,9 +60,8 @@ return {
         ".gitlab/",
         "build/",
         "target/",
-        "dadbod_ui/tmp/",
-        "dadbod_ui/dev/",
         "pnpm-lock.yaml",
+        "*.class",
       },
     },
     words = { enabled = true },
@@ -56,6 +71,7 @@ return {
       },
     },
     dashboard = {
+      enabled = false,
       preset = {
         keys = {
           { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick()" },
@@ -92,7 +108,7 @@ return {
       end,
     },
     {
-      "<leader>g",
+      "<leader>lg",
       function()
         Snacks.picker.grep({ layout = "telescope" })
       end,
@@ -100,7 +116,7 @@ return {
     {
       "<leader>:",
       function()
-        Snacks.picker.command_history({ layout = "my_picker" })
+        Snacks.picker.command_history()
       end,
     },
     {
@@ -118,7 +134,7 @@ return {
     {
       "<leader>f",
       function()
-        Snacks.picker.files({ layout = "my_picker" })
+        Snacks.picker.files()
       end,
     },
     {
@@ -140,23 +156,11 @@ return {
       end,
     },
     {
-      "<leader>gl",
-      function()
-        Snacks.picker.lines()
-      end,
-    },
-    {
       "<leader>gw",
       function()
-        Snacks.picker.grep_word()
+        Snacks.picker.grep_word({ layout = "telescope" })
       end,
       mode = { "n", "x" },
-    },
-    {
-      "<leader>fd",
-      function()
-        Snacks.picker.diagnostics()
-      end,
     },
     {
       "<leader>fh",
@@ -167,33 +171,15 @@ return {
     {
       "<leader>fm",
       function()
-        Snacks.picker.marks()
+        Snacks.picker.marks({ layout = "telescope" })
       end,
     },
-    -- {
-    --   "gd",
-    --   function()
-    --     Snacks.picker.lsp_definitions()
-    --   end,
-    -- },
-    -- {
-    --   "gD",
-    --   function()
-    --     Snacks.picker.lsp_declaration()
-    --   end,
-    -- },
-    -- {
-    --   "gr",
-    --   function()
-    --     Snacks.picker.lsp_references()
-    --   end,
-    --   nowait = true,
-    -- },
-    -- {
-    --   "gi",
-    --   function()
-    --     Snacks.picker.lsp_implementations()
-    --   end,
-    -- },
+    {
+      "grr",
+      function()
+        Snacks.picker.lsp_references({ layout = "telescope" })
+      end,
+      nowait = true,
+    },
   },
 }
