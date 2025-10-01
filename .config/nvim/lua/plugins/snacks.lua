@@ -71,11 +71,10 @@ return {
       },
     },
     dashboard = {
-      enabled = false,
       preset = {
         keys = {
           { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick()" },
-          { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+          { icon = " ", key = "n", desc = "New File", action = ":ene" },
           { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.picker.grep({layout='telescope'})" },
           { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
           {
@@ -116,7 +115,7 @@ return {
     {
       "<leader>:",
       function()
-        Snacks.picker.command_history()
+        Snacks.picker.command_history({ layout = "my_picker" })
       end,
     },
     {

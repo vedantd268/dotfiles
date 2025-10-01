@@ -19,7 +19,6 @@ return {
       },
       menu = {
         auto_show = true,
-        border = "rounded",
         draw = {
           columns = {
             { "label" },
@@ -29,16 +28,10 @@ return {
       },
       documentation = {
         auto_show = false,
-        window = {
-          border = "rounded",
-        },
       },
     },
     signature = {
       enabled = false,
-      window = {
-        border = "rounded",
-      },
     },
   },
 }

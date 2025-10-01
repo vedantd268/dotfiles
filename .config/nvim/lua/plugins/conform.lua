@@ -15,10 +15,9 @@ return {
         graphql = { "prettier" },
         html = { "prettier" },
         css = { "prettier" },
-        java = { "google_java_format" },
       },
       format_on_save = {
-        timeout_ms = 250,
+        timeout_ms = 500,
         lsp_format = "fallback",
       },
     })

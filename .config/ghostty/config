@@ -8,7 +8,7 @@ cursor-style-blink = false
 theme = TokyoNight Night
 background = 000000
 
-background-opacity = 0.95
+background-opacity = 0.85
 
 window-decoration = false
 window-padding-x = 15

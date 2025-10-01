@@ -4,9 +4,6 @@ vim.g.maplocalleader = " "
 local opts = { noremap = true, silent = true }
 local map = vim.keymap.set
 
-map("n", "<leader>w", ":w<CR>")
-map("n", "<leader>q", ":wq<CR>")
-
 map("n", "<leader>h", ":nohlsearch<CR>", opts)
 
 map("n", "x", '"_x', opts)
@@ -46,14 +43,11 @@ map("n", "sh", ":wincmd h<CR>", opts)
 map("n", "sl", ":wincmd l<CR>", opts)
 
 map("n", "<leader>x", ":bdelete!<CR>", opts)
-map("n", "<leader>b", ":enew<CR>", opts)
 
--- map("n", "<leader>ca", function()
---   vim.lsp.buf.code_action()
--- end, opts)
+map("n", "<leader>-", ":Oil<CR>")
 
-map("n", "K", function()
-  vim.lsp.buf.hover({ border = "rounded" })
-end, opts)
+map("n", "<leader>t", ":UndotreeToggle<CR>")
 
-map("n", "<leader>-", ":Oil --float<CR>")
+map("n", "gd", function()
+  vim.lsp.buf.definition()
+end)

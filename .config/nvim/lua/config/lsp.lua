@@ -1,8 +1,6 @@
-vim.lsp.enable("jdtls")
-vim.lsp.enable("lua_ls")
-
 vim.diagnostic.config({
   virtual_text = true,
+  -- virtual_lines = true,
   underline = true,
   update_in_insert = false,
   severity_sort = true,

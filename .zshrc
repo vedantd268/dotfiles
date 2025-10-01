@@ -26,15 +26,12 @@ zinit snippet OMZP::sudo
 zinit snippet OMZP::archlinux
 
 # HACK: Load completions
-autoload -Uz compinit && compinit
+autoload -U compinit && compinit
+autoload -U colors && colors
 
-zinit cdreplay -q
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
-zstyle ':completion:*:descriptions' format '%F{yellow}%d%f'
-zstyle ':completion:*:messages' format '%F{blue}%d%f'
-zstyle ':completion:*:warnings' format '%F{red}%d%f'
-zstyle ':completion:*' group-name ''
+# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} ma=0\;33
 
 # HACK: For vi motions
 function zle-line-init zle-keymap-select {
@@ -64,7 +61,6 @@ alias nv='nvim'
 alias btop='bpytop'
 alias ff='fastfetch'
 alias open='xdg-open'
-alias grep='grep --color -n'
 alias i='paru -S'
 alias ri='paru -Rscn'
 alias s='paru -Ss'

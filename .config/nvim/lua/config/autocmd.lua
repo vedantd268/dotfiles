@@ -5,3 +5,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.hl.on_yank({ timeout = 60 })
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "java",
+  callback = function()
+    require("jdtls.jdtls_setup").setup({})
+  end,
+})

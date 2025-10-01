@@ -1,5 +1,6 @@
 local vo = vim.opt
 
+vo.winborder = "rounded"
 vo.number = true
 vo.relativenumber = true
 vo.numberwidth = 4
@@ -16,7 +17,9 @@ vo.breakindent = true
 vo.backup = false
 vo.showcmd = false
 vo.showmode = false
+vo.showmatch = true
 vo.cmdheight = 1
+vo.laststatus = 2
 vo.backspace = { "start", "eol", "indent" }
 vo.clipboard:append("unnamedplus")
 vo.fileencoding = "utf-8"
@@ -27,7 +30,8 @@ vo.splitbelow = true
 vo.splitright = true
 vo.timeoutlen = 200
 vo.undofile = true
-vo.updatetime = 50
+vo.autoread = true
+vo.updatetime = 100
 vo.writebackup = false
 vo.cursorline = true
 vo.hlsearch = true
