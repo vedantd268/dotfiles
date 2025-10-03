@@ -1,32 +1,28 @@
 return {
   {
-    "neovim/nvim-lspconfig",
-  },
-  {
-    "mfussenegger/nvim-jdtls",
-  },
-  {
     "mason-org/mason.nvim",
-    event = "VeryLazy",
-    opts = {
-      ui = {
-        icons = {
-          package_installed = "✓",
-          package_pending = "➜",
-          package_uninstalled = "✗",
+    Lazy = false,
+    config = function()
+      require("mason").setup({
+        ui = {
+          icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗",
+          },
         },
-      },
-    },
+      })
+    end,
   },
   {
     "mason-org/mason-lspconfig.nvim",
     event = "VeryLazy",
-    opts = {
-      automatic_enable = {
-        exclude = {
-          "jdtls",
+    config = function()
+      require("mason-lspconfig").setup({
+        automatic_enable = {
+          exclude = { "jdtls" },
         },
-      },
-    },
+      })
+    end,
   },
 }

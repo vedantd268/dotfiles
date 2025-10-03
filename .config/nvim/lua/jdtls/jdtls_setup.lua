@@ -1,14 +1,17 @@
 local M = {}
 
 function M:setup()
-  local home = os.getenv("HOME")
-  local workspace_path = home .. "./cache/jdtls-workspace"
   local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-  local workspace_dir = workspace_path .. project_name
-
+  local workspace_dir = vim.fn.stdpath("data")
+    .. package.config:sub(1, 1)
+    .. "jdtls-workspace"
+    .. package.config:sub(1, 1)
+    .. project_name
+  local os_name = vim.loop.os_uname().sysname
   local config = {
     cmd = {
       "java",
+
       "-Declipse.application=org.eclipse.jdt.ls.core.id1",
       "-Dosgi.bundles.defaultStartLevel=4",
       "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -20,18 +23,37 @@ function M:setup()
       "java.base/java.util=ALL-UNNAMED",
       "--add-opens",
       "java.base/java.lang=ALL-UNNAMED",
-      "-javaagent:" .. home .. "/.local/share/nvim/mason/packages/jdtls/lombok.jar",
 
       "-jar",
-      home .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar",
+      vim.fn.stdpath("data")
+        .. package.config:sub(1, 1)
+        .. "mason"
+        .. package.config:sub(1, 1)
+        .. "packages"
+        .. package.config:sub(1, 1)
+        .. "jdtls"
+        .. package.config:sub(1, 1)
+        .. "plugins"
+        .. package.config:sub(1, 1)
+        .. "org.eclipse.equinox.launcher_1.7.0.v20250519-0528.jar",
 
       "-configuration",
-      home .. "/.local/share/nvim/mason/packages/jdtls/config_linux",
+      vim.fn.stdpath("data")
+        .. package.config:sub(1, 1)
+        .. "mason"
+        .. package.config:sub(1, 1)
+        .. "packages"
+        .. package.config:sub(1, 1)
+        .. "jdtls"
+        .. package.config:sub(1, 1)
+        .. "config_"
+        .. (os_name == "Windows_NT" and "win" or os_name == "Linux" and "linux" or "mac"),
 
       "-data",
       workspace_dir,
     },
-    root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }),
+
+    root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" }),
 
     settings = {
       java = {},
@@ -41,7 +63,6 @@ function M:setup()
       bundles = {},
     },
   }
-
   require("jdtls").start_or_attach(config)
 end
 

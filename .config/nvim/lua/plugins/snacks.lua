@@ -67,7 +67,7 @@ return {
     words = { enabled = true },
     styles = {
       notification = {
-        wo = { wrap = false },
+        wo = { wrap = true },
       },
     },
     dashboard = {
