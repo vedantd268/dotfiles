@@ -1,4 +1,5 @@
 return {
+  { "mfussenegger/nvim-jdtls" },
   {
     "mason-org/mason.nvim",
     Lazy = false,
@@ -10,17 +11,6 @@ return {
             package_pending = "➜",
             package_uninstalled = "✗",
           },
-        },
-      })
-    end,
-  },
-  {
-    "mason-org/mason-lspconfig.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("mason-lspconfig").setup({
-        automatic_enable = {
-          exclude = { "jdtls" },
         },
       })
     end,

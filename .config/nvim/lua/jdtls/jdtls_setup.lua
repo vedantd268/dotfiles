@@ -1,13 +1,11 @@
 local M = {}
 
 function M:setup()
+  local home = os.getenv("HOME")
   local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-  local workspace_dir = vim.fn.stdpath("data")
-    .. package.config:sub(1, 1)
-    .. "jdtls-workspace"
-    .. package.config:sub(1, 1)
-    .. project_name
+  local workspace_dir = home .. "/.cache/jdtls-workspace/" .. project_name
   local os_name = vim.loop.os_uname().sysname
+
   local config = {
     cmd = {
       "java",
@@ -23,6 +21,8 @@ function M:setup()
       "java.base/java.util=ALL-UNNAMED",
       "--add-opens",
       "java.base/java.lang=ALL-UNNAMED",
+
+      "-javaagent:" .. home .. "/.local/share/nvim/mason/packages/jdtls/lombok.jar",
 
       "-jar",
       vim.fn.stdpath("data")
@@ -54,9 +54,32 @@ function M:setup()
     },
 
     root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" }),
-
     settings = {
-      java = {},
+      java = {
+        signatureHelp = {
+          enabled = true,
+        },
+        inlayHints = {
+          parameterNames = {
+            enabled = "all",
+          },
+        },
+        maven = {
+          downloadSources = true,
+        },
+        referencesCodeLens = {
+          enabled = true,
+        },
+        codeGeneration = {
+          toString = {
+            template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
+          },
+          hashCodeEquals = {
+            useJava7Objects = true,
+          },
+          useBlocks = true,
+        },
+      },
     },
 
     init_options = {

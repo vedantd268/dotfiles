@@ -18,7 +18,7 @@ vo.backup = false
 vo.showcmd = false
 vo.showmode = false
 vo.showmatch = true
-vo.cmdheight = 0
+vo.cmdheight = 1
 vo.laststatus = 2
 vo.backspace = { "start", "eol", "indent" }
 vo.clipboard:append("unnamedplus")
@@ -41,13 +41,9 @@ vo.smartcase = true
 vo.ignorecase = true
 
 vim.diagnostic.config({
-  virtual_text = false,
   underline = true,
   update_in_insert = false,
   severity_sort = true,
-  float = {
-    source = false,
-  },
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "󰅚 ",

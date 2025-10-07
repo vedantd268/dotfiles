@@ -7,7 +7,7 @@ return {
       timeout = 2000,
     },
     bigfile = {
-      enabled = false,
+      enabled = true,
     },
     image = {
       enabled = false,

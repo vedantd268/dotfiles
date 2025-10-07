@@ -29,7 +29,6 @@ return {
             Pmenu = { bg = "none", fg = "none" },
             PmenuSel = { bg = palette.waveBlue1, fg = "none" },
             BlinkCmpMenuBorder = { bg = "none" },
-            WinSeparator = { fg = palette.waveBlue1 },
           }
         end,
       })
