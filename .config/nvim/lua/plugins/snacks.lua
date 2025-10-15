@@ -35,8 +35,8 @@ return {
           layout = {
             box = "horizontal",
             backdrop = false,
-            width = 0.6,
-            height = 0.7,
+            width = 0.65,
+            height = 0.75,
             {
               box = "vertical",
               { win = "list", title = " Results ", title_pos = "center", border = "rounded" },
@@ -171,6 +171,30 @@ return {
       "<leader>fm",
       function()
         Snacks.picker.marks({ layout = "telescope" })
+      end,
+    },
+    {
+      "<leader>fd",
+      function()
+        Snacks.picker.diagnostics({ layout = "telescope" })
+      end,
+    },
+    {
+      "gd",
+      function()
+        Snacks.picker.lsp_definitions()
+      end,
+    },
+    {
+      "gri",
+      function()
+        Snacks.picker.lsp_implementations({ layout = "telescope" })
+      end,
+    },
+    {
+      "<leader>fs",
+      function()
+        Snacks.picker.lsp_symbols({ layout = "telescope" })
       end,
     },
     {

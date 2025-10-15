@@ -61,7 +61,7 @@ function M:setup()
         },
         inlayHints = {
           parameterNames = {
-            enabled = "all",
+            enabled = "none",
           },
         },
         maven = {

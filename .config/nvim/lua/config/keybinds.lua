@@ -4,6 +4,8 @@ vim.g.maplocalleader = " "
 local opts = { noremap = true, silent = true }
 local map = vim.keymap.set
 
+map("n", "<leader>w", ":update<CR>", opts)
+
 map("n", "<leader>h", ":nohlsearch<CR>", opts)
 
 map("n", "x", '"_x', opts)
@@ -42,19 +44,16 @@ map("n", "sj", ":wincmd j<CR>", opts)
 map("n", "sh", ":wincmd h<CR>", opts)
 map("n", "sl", ":wincmd l<CR>", opts)
 
-map("n", "<leader>x", ":bdelete!<CR>", opts)
+map("n", "<leader>bd", ":bdelete!<CR>", opts)
 
 map("n", "<leader>-", ":Oil<CR>")
 
 map("n", "<leader>t", ":UndotreeToggle<CR>")
 
-map("n", "]d", function()
-  vim.diagnostic.goto_next()
-end)
+-- map("n", "]d", function()
+--   vim.diagnostic.goto_next()
+-- end)
 
-map("n", "[d", function()
-  vim.diagnostic.goto_prev()
-end)
-map("n", "gd", function()
-  vim.lsp.buf.definition()
-end)
+-- map("n", "[d", function()
+--   vim.diagnostic.goto_prev()
+-- end)

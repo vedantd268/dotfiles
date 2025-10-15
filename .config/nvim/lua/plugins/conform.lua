@@ -15,6 +15,10 @@ return {
         graphql = { "prettier" },
         html = { "prettier" },
         css = { "prettier" },
+        vue = { "prettier" },
+        sql = { "sql_formatter" },
+        c = { "clang-format" },
+        cpp = { "clang-format" },
       },
       format_on_save = {
         timeout_ms = 500,

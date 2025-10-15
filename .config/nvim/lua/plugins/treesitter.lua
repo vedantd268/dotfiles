@@ -4,7 +4,6 @@ return {
     "nvim-treesitter/nvim-treesitter-textobjects",
   },
   branch = "master",
-  lazy = true,
   build = ":TSUpdate",
   event = "VeryLazy",
   config = function()
