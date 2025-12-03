@@ -1,0 +1,104 @@
+* {
+  font-family: "JetBrainsMono Nerd Font Propo";
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#waybar {
+  background-color: rgba(0, 0, 0, 0);
+  color: #dcdfe1;
+  border: none;
+  box-shadow: none;
+}
+
+#workspaces,
+#tray {
+  background-color: rgba(29, 31, 46, 0.95);
+  /* background-color: rgba(15, 27, 53, 0.9); */
+  padding: 4px 6px;
+  margin-top: 6px;
+  margin-left: 6px;
+  margin-right: 6px;
+  border-radius: 10px;
+  border-width: 0px;
+}
+
+#clock,
+#power-profiles-daemon {
+  background-color: rgba(29, 31, 46, 0.95);
+  margin-top: 6px;
+  margin-right: 6px;
+  padding: 4px 2px;
+  border-radius: 0 10px 10px 0;
+  border-width: 0px;
+}
+
+#network,
+#custom-lock {
+  background-color: rgba(29, 31, 46, 0.95);
+  margin-top: 6px;
+  margin-left: 6px;
+  padding: 4px 2px;
+  border-radius: 10px 0 0 10px;
+  border-width: 0px;
+}
+
+#custom-reboot,
+#custom-power,
+#bluetooth,
+#battery,
+#pulseaudio,
+#backlight,
+#custom-temperature,
+#memory,
+#cpu {
+  background-color: rgba(29, 31, 46, 0.95);
+  margin-top: 6px;
+  padding: 4px 2px;
+  border-width: 0px;
+}
+
+#custpm-temperature.critical {
+  color: #ff0000;
+  padding-top: 0;
+}
+
+#bluetooth:hover,
+#network:hover,
+#backlight:hover,
+#battery:hover,
+#pulseaudio:hover,
+#custom-temperature:hover,
+#memory:hover,
+#cpu:hover,
+#clock:hover,
+#custom-lock:hover,
+#custom-reboot:hover,
+#custom-power:hover,
+#power-profiles-daemon:hover {
+  background-color: rgba(70, 75, 90, 0.9);
+}
+
+#workspaces button:hover {
+  background-color: rgba(97, 175, 239, 0.2);
+  padding: 2px 8px;
+  margin: 0 2px;
+  border-radius: 10px;
+}
+
+#workspaces button.active {
+  background-color: #61afef;
+  color: #000000;
+  padding: 2px 8px;
+  margin: 0 2px;
+  border-radius: 10px;
+}
+
+#workspaces button {
+  background: transparent;
+  border: none;
+  color: #dcdfe1;
+  padding: 2px 8px;
+  margin: 0 2px;
+  font-weight: bold;
+}
