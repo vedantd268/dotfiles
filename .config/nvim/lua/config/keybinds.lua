@@ -50,10 +50,10 @@ map("n", "<leader>-", ":Oil<CR>")
 
 map("n", "<leader>t", ":UndotreeToggle<CR>")
 
--- map("n", "]d", function()
---   vim.diagnostic.goto_next()
--- end)
+map("n", "]d", function()
+  vim.diagnostic.goto_next()
+end)
 
--- map("n", "[d", function()
---   vim.diagnostic.goto_prev()
--- end)
+map("n", "[d", function()
+  vim.diagnostic.goto_prev()
+end)
