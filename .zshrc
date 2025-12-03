@@ -94,5 +94,3 @@ alias reload="source $zshrc"
 # HACK: Shell integration
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
-
-. "$HOME/.local/bin/env"
