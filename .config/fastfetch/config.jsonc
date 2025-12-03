@@ -57,13 +57,13 @@
             "type": "gpu"
         },
         {
+            "key": "{$2}{#32} memory   ",
+            "type": "memory"
+        },
+        {
             "key": "{$2}{#33}󰉉 disk     ",
             "type": "disk",
             "folders": "/"
-        },
-        {
-            "key": "{$2}{#32} memory   ",
-            "type": "memory"
         },
         {
             "key": "{$2}{#31}󰩟 network  ",
