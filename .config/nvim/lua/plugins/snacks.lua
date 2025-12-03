@@ -182,7 +182,7 @@ return {
     {
       "gd",
       function()
-        Snacks.picker.lsp_definitions()
+        Snacks.picker.lsp_definitions({ layout = "telescope" })
       end,
     },
     {
@@ -203,6 +203,12 @@ return {
         Snacks.picker.lsp_references({ layout = "telescope" })
       end,
       nowait = true,
+    },
+    {
+      "<leader>mv",
+      function()
+        Snacks.rename.rename_file()
+      end,
     },
   },
 }
