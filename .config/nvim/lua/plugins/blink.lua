@@ -9,13 +9,13 @@ return {
     },
     appearance = {
       nerd_font_variant = "normal",
-
       kind_icons = {
         Text = "󰉿",
-        Method = "󰆧",
+        Method = "󰊕",
         Function = "󰊕",
         Constructor = "",
         Field = "󰜢",
+        Package = "",
         Variable = "󰀫",
         Class = "󰠱",
         Interface = "",
@@ -28,12 +28,12 @@ return {
         Snippet = "",
         Color = "󰏘",
         File = "󰈙",
-        Reference = "󰈇",
+        Reference = "",
         Folder = "󰉋",
         EnumMember = "",
         Constant = "󰏿",
         Struct = "󰙅",
-        Event = "",
+        Event = "",
         Operator = "󰆕",
         TypeParameter = "󰬛",
       },
@@ -51,12 +51,12 @@ return {
           columns = {
             { "kind_icon" },
             { "label" },
-            -- { "kind" },
           },
         },
       },
       documentation = {
-        auto_show = false,
+        auto_show = true,
+        auto_show_delay_ms = 250,
       },
     },
     signature = {
