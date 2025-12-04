@@ -31,7 +31,6 @@ vo.splitright = true
 vo.timeoutlen = 200
 vo.undofile = true
 vo.autoread = true
-vo.updatetime = 100
 vo.writebackup = false
 vo.cursorline = true
 vo.hlsearch = true
