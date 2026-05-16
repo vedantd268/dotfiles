@@ -206,7 +206,7 @@ return {
       nowait = true,
     },
     {
-      "<leader>mv",
+      "<leader>rn",
       function()
         Snacks.rename.rename_file()
       end,
