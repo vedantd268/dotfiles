@@ -35,7 +35,7 @@ function M:setup()
         .. package.config:sub(1, 1)
         .. "plugins"
         .. package.config:sub(1, 1)
-        .. "org.eclipse.equinox.launcher_1.7.100.v20251014-1222.jar",
+        .. "org.eclipse.equinox.launcher_1.7.100.v20251111-0406.jar",
 
       "-configuration",
       vim.fn.stdpath("data")
@@ -57,7 +57,7 @@ function M:setup()
     settings = {
       java = {
         signatureHelp = {
-          enabled = false,
+          enabled = true,
         },
         inlayHints = {
           parameterNames = {

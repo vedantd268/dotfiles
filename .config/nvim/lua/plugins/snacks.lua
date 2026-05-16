@@ -4,7 +4,7 @@ return {
   lazy = false,
   opts = {
     notifier = {
-      timeout = 2000,
+      timeout = 3000,
     },
     bigfile = {
       enabled = true,
@@ -62,6 +62,7 @@ return {
         "target/",
         "pnpm-lock.yaml",
         "*.class",
+        "venv/",
       },
     },
     words = { enabled = true },

@@ -44,7 +44,7 @@ map("n", "sj", ":wincmd j<CR>", opts)
 map("n", "sh", ":wincmd h<CR>", opts)
 map("n", "sl", ":wincmd l<CR>", opts)
 
-map("n", "<leader>bd", ":bdelete!<CR>", opts)
+map("n", "<leader>dd", ":bdelete!<CR>", opts)
 
 map("n", "<leader>-", ":Oil<CR>")
 

@@ -13,6 +13,8 @@ vim.lsp.config("lua_ls", {
   },
   settings = {
     Lua = {
+      codeLens = { enable = true },
+      hint = { enable = true, semicolon = "Disable" },
       diagnostics = {
         disable = {
           "undefined-global",
@@ -130,10 +132,72 @@ vim.lsp.config("vtsls", {
   end,
 })
 
-vim.lsp.enable("lua_ls")
-vim.lsp.enable("docker_ls")
-vim.lsp.enable("html")
-vim.lsp.enable("css")
-vim.lsp.enable("emmet_ls")
-vim.lsp.enable("clangd")
-vim.lsp.enable("vtsls")
+local function set_python_path(command)
+  local path = command.args
+  local clients = vim.lsp.get_clients({
+    bufnr = vim.api.nvim_get_current_buf(),
+    name = "pyright",
+  })
+  for _, client in ipairs(clients) do
+    if client.settings then
+      client.settings.python =
+        vim.tbl_deep_extend("force", client.settings.python --[[@as table]], { pythonPath = path })
+    else
+      client.config.settings = vim.tbl_deep_extend("force", client.config.settings, { python = { pythonPath = path } })
+    end
+    client:notify("workspace/didChangeConfiguration", { settings = nil })
+  end
+end
+
+vim.lsp.config("pyright", {
+  cmd = { "pyright-langserver", "--stdio" },
+  filetypes = { "python" },
+  root_markers = {
+    "pyrightconfig.json",
+    "pyproject.toml",
+    "setup.py",
+    "setup.cfg",
+    "requirements.txt",
+    "Pipfile",
+    ".git",
+  },
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = "openFilesOnly",
+        reportArgumentType = false,
+        typeCheckingMode = "basic",
+      },
+    },
+  },
+  on_attach = function(client, bufnr)
+    vim.api.nvim_buf_create_user_command(bufnr, "LspPyrightOrganizeImports", function()
+      local params = {
+        command = "pyright.organizeimports",
+        arguments = { vim.uri_from_bufnr(bufnr) },
+      }
+
+      client.request("workspace/executeCommand", params, nil, bufnr)
+    end, {
+      desc = "Organize Imports",
+    })
+    vim.api.nvim_buf_create_user_command(bufnr, "LspPyrightSetPythonPath", set_python_path, {
+      desc = "Reconfigure pyright with the provided python path",
+      nargs = 1,
+      complete = "file",
+    })
+  end,
+})
+
+vim.lsp.enable({
+  "lua_ls",
+  "docker_ls",
+  "html",
+  "css",
+  "emmet_ls",
+  "clangd",
+  "vtsls",
+  "pyright",
+})

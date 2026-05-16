@@ -10,6 +10,8 @@ return {
       javascriptreact = { "eslint_d" },
       typescriptreact = { "eslint_d" },
       java = { "checkstyle" },
+      python = { "ruff" },
+      php = { "duster" },
     }
   end,
 }

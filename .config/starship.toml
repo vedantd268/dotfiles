@@ -3,17 +3,24 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
+$fill\
+$python\
+$jobs\
 $line_break\
 $character"""
+
+[fill]
+symbol = " "
 
 [directory]
 style = "blue"
 format = '[$path]($style) '
-truncation_length = 0
+truncation_length = 7
+truncation_symbol = "../"
 truncate_to_repo = true
 
 [character]
-success_symbol = "[❯](purple)"
+success_symbol = "[❯](#FC45FF)"
 error_symbol = "[❯](red)"
 vimcmd_symbol = "[❯](yellow)"
 
@@ -35,3 +42,14 @@ stashed = "≡"
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bright-black"
+
+[python]
+style = "bold bright-yellow"
+symbol = ' '
+format = '[${symbol}(\($virtualenv\) )]($style)'
+
+[jobs]
+symbol = ' '
+style = 'red'
+number_threshold = 1
+format = "[$symbol$number]($style) "

@@ -94,3 +94,8 @@ alias reload="source $zshrc"
 # HACK: Shell integration
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
+export PATH="/home/shallow/.config/herd-lite/bin:$PATH"
+export PHP_INI_SCAN_DIR="/home/shallow/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+
+# Default editor
+export EDITOR=nvim

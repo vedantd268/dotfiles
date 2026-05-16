@@ -1,11 +1,18 @@
 return {
   "saghen/blink.cmp",
   event = "VeryLazy",
-  dependencies = { "rafamadriz/friendly-snippets" },
+  dependencies = {
+    "rafamadriz/friendly-snippets",
+    "L3MON4D3/LuaSnip",
+    version = "v2.*",
+  },
   version = "1.*",
   opts = {
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
+    },
+    snippets = {
+      preset = "luasnip",
     },
     appearance = {
       nerd_font_variant = "normal",
@@ -63,4 +70,9 @@ return {
       enabled = false,
     },
   },
+  config = function(_, opts)
+    require("luasnip.loaders.from_vscode").lazy_load()
+
+    require("blink.cmp").setup(opts)
+  end,
 }
