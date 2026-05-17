@@ -49,3 +49,23 @@ map("n", "<leader>dd", ":bdelete!<CR>", opts)
 map("n", "<leader>-", ":Oil<CR>")
 
 map("n", "<leader>t", ":UndotreeToggle<CR>")
+
+map({ "x", "o" }, "af", function()
+  require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
+end, opts)
+
+map({ "x", "o" }, "if", function()
+  require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
+end, opts)
+
+map({ "x", "o" }, "ac", function()
+  require("nvim-treesitter-textobjects.select").select_textobject("@class.outer", "textobjects")
+end, opts)
+
+map({ "x", "o" }, "ic", function()
+  require("nvim-treesitter-textobjects.select").select_textobject("@class.inner", "textobjects")
+end, opts)
+
+map({ "x", "o" }, "as", function()
+  require("nvim-treesitter-textobjects.select").select_textobject("@local.scope", "locals")
+end, opts)
