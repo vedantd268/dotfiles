@@ -7,6 +7,6 @@ return {
     TS.setup({
       install_dir = vim.fn.stdpath("data") .. "/site",
     })
-    TS.install({ "rust", "javascript", "zig", "python", "java" })
+    TS.install({ "rust", "javascript", "zig", "python", "java", "bash", "sql", "json", "html", "css", "markdown" })
   end,
 }
