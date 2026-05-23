@@ -47,6 +47,9 @@ style = "bright-black"
 style = "bold bright-yellow"
 symbol = ' '
 format = '[${symbol}(\($virtualenv\) )]($style)'
+detect_extensions = []
+detect_files = []
+detect_folders = []
 
 [jobs]
 symbol = ' '
