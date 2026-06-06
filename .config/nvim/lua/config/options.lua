@@ -39,9 +39,19 @@ vo.inccommand = "split"
 vo.smartcase = true
 vo.ignorecase = true
 
+local function on_jump(diagnostic)
+  if not diagnostic then
+    return
+  end
+
+  -- vim.diagnostic.show(diagnostic.namespace, bufnr, { diagnostic }, { virtual_text = { current_line = false } })
+  vim.diagnostic.open_float()
+end
+
 vim.diagnostic.config({
   virtual_text = false,
-  virtual_lines = { current_line = true },
+  virtual_lines = false,
+  jump = { on_jump = on_jump },
   underline = true,
   update_in_insert = false,
   severity_sort = true,
