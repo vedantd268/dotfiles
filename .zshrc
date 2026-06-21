@@ -58,13 +58,8 @@ alias lt2='ls -T -L=2'
 alias lt3='ls -T -L=3'
 
 alias nv='nvim'
-alias btop='bpytop'
 alias ff='fastfetch'
 alias open='xdg-open'
-alias i='paru -S'
-alias ri='paru -Rscn'
-alias s='paru -Ss'
-alias pu='paru -Syu'
 
 # HACK: fzf default options
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --exclude .git --exclude node_modules"
